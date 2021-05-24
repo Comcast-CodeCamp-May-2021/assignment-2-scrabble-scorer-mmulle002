@@ -22,8 +22,16 @@ function oldScrabbleScorer(word) {
 	  for (const pointValue in oldPointStructure) {
  
 		 if (oldPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`}
-	  }
+       letterPoints += `Points for '${word[i]}': ${pointValue}\n`}
+      
+    }
+       //letterPoints += `${pointValue}`
+// *** This is gooing to be "console.log"ing this info, not adding them together. 
+      //for (let j =0; j < word.length; j++){
+         //total = word[j]
+
+			//letterPoints += `Points for '${word[i]}': ${pointValue}\n`}
+
 	}
 	return letterPoints;
  }
@@ -45,7 +53,7 @@ function simpleScore(word) { // simple, just count each letter in the word//use 
   for (let i = 0; i < word.length; i++) { 
     letterPoints++//console.log(i)
   }
-  return letterPoints
+  return letterPoints //return was out of place//
   //return word.length;
 }
 
@@ -76,8 +84,10 @@ function scrabbleScore(word) {  //scrabbleScore uses oldScrabbleScorer//
   for (let i = 0; i < word.length; i++){ 
   
     characterPoints += newPointStructure[word[i]]
-    }
-     //console.log(characterPoints);
+    // console.log({characterPoints});
+  }
+
+  // console.log({characterPoints});
     
   return characterPoints;
   
@@ -94,10 +104,10 @@ const scoringAlgorithms = [ // possible scoring options to be chosen from by the
     description: "Vowels are 3 pts, consonants are 1 pt.",
     scoringFunction: vowelBonusScore
   },
-  oldScrabbleScoring = {
+  scrabbleScoring = {
     name: "Scrabble",
     description: "The traditional scoring algorithm.",
-    scoringFunction: oldScrabbleScorer
+    scoringFunction: scrabbleScore
   }
  ];
 
@@ -164,11 +174,11 @@ function transform(newScoring){
 
 function runProgram() { //still to be added to//
   console.clear()
-   let inputWord = initialPrompt();
-   //simpleScore(inputWord);
-   //vowelBonusScore(inputWord);
-   //scrabbleScore(inputWord);
-   scorerPrompt(inputWord);
+  let inputWord = initialPrompt();
+  //simpleScore(inputWord);
+  //vowelBonusScore(inputWord);
+  //scrabbleScore(inputWord);
+  scorerPrompt(inputWord);
   
 
 }
